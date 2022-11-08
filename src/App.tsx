@@ -76,7 +76,7 @@ export default function index() {
 
           {
             storeEnemy !== null && (
-              <button onClick={endBattle}>Desistir</button>
+              <button onClick={encerrarBatalha}>Desistir</button>
             )
           }
         </div>
@@ -100,11 +100,15 @@ export default function index() {
           }
         </div>
       </div>
-      <div className={style.battleLog}>
-        {batteLog.map((e, index) => (
-          <p key={index}>{e}</p>
-        ))}
-      </div>
+        {batteLog.length > 0 && (
+          <div className={style.battleLog}>
+            {
+              batteLog.map((e, index) => (
+                <p key={index}>{e}</p>
+              ))
+            }
+          </div>
+        )}
     </div>
   );
 }

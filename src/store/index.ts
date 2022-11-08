@@ -66,7 +66,7 @@ export const useStore = create(
                 set(() => ({ enemy: newEnemy, battleLog: [] }));
             },
             endBattle: () => {
-                set(() => ({ enemy: null }))
+                set(() => ({ enemy: null, battleLog: [] }))
             }
         }),
         { name: 'store' }
