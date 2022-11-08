@@ -6,22 +6,6 @@ import golpes from 'assets/golpes.json';
 
 import { useStore } from 'store';
 
-// const useBattle = () => {
-//   const { storeHero, storeEnemy, batalhar, atacar, batteLog } = useStore(
-//     (store) => ({
-//       storeHero: store.hero,
-//       storeEnemy: store.enemy,
-//       batalhar: store.lutar,
-//       atacar: store.attack,
-//       batteLog: store.battleLog
-//     }),
-//     shallow
-//   )
-  
-//   return { storeHero, storeEnemy, batalhar, atacar, batteLog };
-// }
-
-
 export default function index() {
 
   const { storeHero, storeEnemy, batalhar, atacar, batteLog, endBattle } = useStore(
@@ -54,7 +38,14 @@ export default function index() {
     <div className={style.container}>
       <div className={style.battleContainer}>
         <div className={style.hero}>
-          <p>{storeHero.name}</p>
+            <div className={style.heroInfo}>
+              <p>{storeHero.name} level: {storeHero.level}</p>
+              <div className={style.heroXpBar}>
+                <div style={{'width': `${storeHero.xp.percent}%`}} className={style.heroXpBarColor}>
+                  <p className={style.percent}>{storeHero.xp.actual}/{storeHero.xp.max}</p>
+                </div>
+              </div>
+            </div>
             {
               storeEnemy !== null && (
                 <div className={style.golpes}>
