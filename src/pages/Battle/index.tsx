@@ -78,6 +78,7 @@ export const BattlePage = () => {
               </div>
             ) : (
               <div className={style.enemyLog}>
+                <img src={storeEnemy.image} alt={storeEnemy.name} />
                 <div>{storeEnemy.name} level: {storeEnemy.level}</div>
                 <div>Life: {storeEnemy.life}</div>
                 <div className={style.lifeBar}>

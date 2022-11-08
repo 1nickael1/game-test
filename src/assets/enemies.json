@@ -5,7 +5,8 @@
         "life": 53,
         "defense": 5,
         "level": 1,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/KibaInuzuka.png"
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "life": 72,
         "defense": 10,
         "level": 1,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/HinataHyuga.png"
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "life": 82,
         "defense": 10,
         "level": 1,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/KurenaiYuhi.png"
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "life": 101,
         "defense": 10,
         "level": 2,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/Tenten.png"
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@
         "life": 155,
         "defense": 15,
         "level": 2,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/NejiHyuga.png"
     },
     {
         "id": 6,
@@ -45,7 +50,8 @@
         "life": 133,
         "defense": 15,
         "level": 2,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/RockLee.png"
     },
     {
         "id": 7,
@@ -53,7 +59,8 @@
         "life": 171,
         "defense": 20,
         "level": 3,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/InoYamanaka.png"
     },
     {
         "id": 8,
@@ -61,7 +68,8 @@
         "life": 185,
         "defense": 25,
         "level": 3,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/ShikamaruNara.png"
     },
     {
         "id": 9,
@@ -69,6 +77,43 @@
         "life": 210,
         "defense": 25,
         "level": 3,
-        "lifePercent": 100
+        "lifePercent": 100,
+        "image": "/characters/ChojiAkimichi.png"
+    },
+    {
+        "id": 10,
+        "name": "Madara Uchiha",
+        "life": 250,
+        "defense": 30,
+        "level": 4,
+        "lifePercent": 100,
+        "image": "/characters/MadaraUchiha.png"
+    },
+    {
+        "id": 11,
+        "name": "Tobi",
+        "life": 350,
+        "defense": 45,
+        "level": 5,
+        "lifePercent": 100,
+        "image": "/characters/Tobi.png"
+    },
+    {
+        "id": 12,
+        "name": "Pain",
+        "life": 350,
+        "defense": 50,
+        "level": 6,
+        "lifePercent": 100,
+        "image": "/characters/Pain.png"
+    },
+    {
+        "id": 13,
+        "name": "Itachi Uchiha",
+        "life": 450,
+        "defense": 55,
+        "level": 7,
+        "lifePercent": 100,
+        "image": "/characters/ItachiUchiha.png"
     }
 ]

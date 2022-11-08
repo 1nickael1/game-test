@@ -65,7 +65,7 @@ export const useStore = create(
             lutar: () => {
                 const { getRandomNumberBetweenMaxAndMin, hero } = get();
                 
-                const maxLevelEnabled = (hero.level + 1) >= 3 ? 3 : hero.level + 1;
+                const maxLevelEnabled = (hero.level + 1) >= 7 ? 7 : hero.level + 1;
                 const minLevelEnabled = (hero.level - 1) <= 0 ? 1 : (hero.level - 1);
 
                 const randomEnemyLevel = getRandomNumberBetweenMaxAndMin(maxLevelEnabled, minLevelEnabled > maxLevelEnabled ? maxLevelEnabled : minLevelEnabled);

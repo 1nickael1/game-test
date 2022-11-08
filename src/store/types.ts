@@ -12,6 +12,7 @@ export interface EnemyType {
     defense: number;
     level: number;
     lifePercent: number;
+    image: string;
 }
 
 interface XpType {
