@@ -100,7 +100,7 @@ export default function index() {
           }
         </div>
       </div>
-      <div>
+      <div className={style.battleLog}>
         {batteLog.map((e, index) => (
           <p key={index}>{e}</p>
         ))}
