@@ -6,3 +6,5 @@ Feito com:
 - TypeScript
 - Zustand
 - SASS
+
+Live demo: https://nick-game-test.netlify.app/
