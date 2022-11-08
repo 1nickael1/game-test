@@ -50,7 +50,7 @@ export const useStore = create(
     
                     if (newEnemy.life <= 0) {
                         // @ts-ignore
-                        const XpReceived = getRandomNumberBetweenMaxAndMin( 20 + ((hero.level * newEnemy.level) * 1.9), 10);
+                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + ((hero.level * newEnemy.level) * 1.9), 10);
 
                         levelUp(XpReceived);
 
@@ -65,13 +65,20 @@ export const useStore = create(
                 }
             },
             lutar: () => {
-                const { getRandomNumberBetweenMaxAndMin } = get();
+                const { getRandomNumberBetweenMaxAndMin, hero } = get();
+                
+                const maxLevelEnabled = (hero.level + 1) >= 3 ? 3 : hero.level + 1;
+                const minLevelEnabled = (hero.level - 1) <= 0 ? 1 : (hero.level - 1);
 
-                let maxEnemies = enemies.length;
+                const randomEnemyLevel = getRandomNumberBetweenMaxAndMin(maxLevelEnabled, minLevelEnabled > maxLevelEnabled ? maxLevelEnabled : minLevelEnabled);
 
-                let enemyRandom = getRandomNumberBetweenMaxAndMin(maxEnemies, 1);
+                const getEnemiesBetweenLevel = enemies.filter(e => e.level == randomEnemyLevel);
 
-                let [newEnemy] = [...enemies.filter(enemy => enemy.id == enemyRandom)];
+                let maxEnemies = getEnemiesBetweenLevel.length - 1;
+
+                let enemyRandom = getRandomNumberBetweenMaxAndMin(maxEnemies, 0);
+
+                let [newEnemy] = [...getEnemiesBetweenLevel.filter((_, index) => index == enemyRandom)];
                 set(() => ({ enemy: newEnemy, battleLog: [] }));
             },
             endBattle: () => {

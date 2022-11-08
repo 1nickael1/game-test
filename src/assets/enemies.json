@@ -1,25 +1,73 @@
 [
     {
         "id": 1,
-        "name": "Inimigo 1",
+        "name": "Kiba Inuzuka",
         "life": 53,
-        "defense": 10,
+        "defense": 5,
         "level": 1,
         "lifePercent": 100
     },
     {
         "id": 2,
-        "name": "Inimigo 2",
+        "name": "Hinata Hyūga",
         "life": 72,
-        "defense": 20,
-        "level": 2,
+        "defense": 10,
+        "level": 1,
         "lifePercent": 100
     },
     {
         "id": 3,
-        "name": "Inimigo 3",
-        "life": 113,
+        "name": "Kurenai Yūhi",
+        "life": 82,
+        "defense": 10,
+        "level": 1,
+        "lifePercent": 100
+    },
+    {
+        "id": 4,
+        "name": "Tenten",
+        "life": 101,
+        "defense": 10,
+        "level": 2,
+        "lifePercent": 100
+    },
+    {
+        "id": 5,
+        "name": "Neji Hyūga",
+        "life": 155,
+        "defense": 15,
+        "level": 2,
+        "lifePercent": 100
+    },
+    {
+        "id": 6,
+        "name": "Rock Lee",
+        "life": 133,
+        "defense": 15,
+        "level": 2,
+        "lifePercent": 100
+    },
+    {
+        "id": 7,
+        "name": "Ino Yamanaka",
+        "life": 171,
         "defense": 20,
+        "level": 3,
+        "lifePercent": 100
+    },
+    {
+        "id": 8,
+        "name": "Shikamaru Nara",
+        "life": 185,
+        "defense": 25,
+        "level": 3,
+        "lifePercent": 100
+    },
+    {
+        "id": 9,
+        "name": "Chōji Akimichi",
+        "life": 210,
+        "defense": 25,
         "level": 3,
         "lifePercent": 100
     }
