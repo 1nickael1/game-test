@@ -123,6 +123,6 @@ export const useStore = create(
                 return Math.round(Math.random() * (max - min) + min)
             },
         }),
-        { name: 'store' }
+        { name: 'store', version: 0.1 }
     )
 )
