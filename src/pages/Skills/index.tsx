@@ -35,7 +35,7 @@ export const SkillsPage = () => {
                                             disabled={golpe.levelRequired > storeHero.level} 
                                             className={golpe.levelRequired > storeHero.level ? style.disabled : ''}
                                             title={golpe.levelRequired > storeHero.level ? 
-                                                `Você precisa ter level ${golpe.levelRequired} para aprender este golpe` :
+                                                `Você precisa ser level ${golpe.levelRequired} para aprender este golpe` :
                                                 'Aprender'
                                             }
                                             onClick={() => aprenderGolpe(golpe.id)}
