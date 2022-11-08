@@ -158,14 +158,26 @@
     }
 
     .battleLog {
-        margin-top: 50px;
-        width: 90%;
-        padding: 10px 20px;
-        display: flex;
+        transform-origin: 50% 50%; 
+        transform: rotate(180deg); 
+        border: 1px solid;
+        width: 120px; 
+        height: 120px; 
+        overflow-y: auto;
+        direction: rtl;
         text-align: left;
-        border: 1px solid rgba(gray, 0.3);
-        flex-direction: column;
-        max-height: 300px;
-        overflow-y: scroll;
+        width: 90%;
+        margin-top: 50px;
+        height: 200px;
+        
+        .messagesContainer {
+            float: left;
+            width: 100%; 
+            transform: rotate(180deg);
+
+            .message {
+                padding: 0.5em;
+            }
+        }
     }
 }

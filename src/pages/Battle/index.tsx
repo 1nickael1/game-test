@@ -93,11 +93,13 @@ export const BattlePage = () => {
       </div>
         {batteLog.length > 0 && (
           <div className={style.battleLog}>
-            {
-              batteLog.map((e, index) => (
-                <p key={index}>{e}</p>
-              ))
-            }
+            <div className={style.messagesContainer}>
+              {
+                batteLog.map((e, index) => (
+                  <p className={style.message} key={index}>{e}</p>
+                ))
+              }
+            </div>
           </div>
         )}
     </div>
