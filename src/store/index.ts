@@ -5,8 +5,6 @@ import { EnemyType, GolpesType, HeroType, StoreType } from './types';
 import golpes from 'assets/golpes.json';
 import enemies from 'assets/enemies.json';
 
-
-
 export const useStore = create(
     persist<StoreType>(
         (set, get) => ({
@@ -15,7 +13,7 @@ export const useStore = create(
                 life: 50,
                 defense: 10,
                 level: 1,
-                attacks: [1,2],
+                attacks: [1],
                 xp: {
                     actual: 0,
                     max: 100,
@@ -91,7 +89,7 @@ export const useStore = create(
                 let newXp = actualXp.actual + XpReceived;
 
                 
-                if(newXp > actualXp.max) {
+                if(newXp >= actualXp.max) {
                     let newXpValue = newXp - actualXp.max;
                     let newXpMax = Math.round(actualXp.max + (actualXp.max * 1.2));
                     let newLevel = actualHeroLevel + 1;
@@ -128,6 +126,22 @@ export const useStore = create(
             },
             getRandomNumberBetweenMaxAndMin(max, min) {
                 return Math.round(Math.random() * (max - min) + min)
+            },
+            learnAttack(attackID) {
+                const { hero } = get();
+                const allAttacks = golpes;
+                const [attackToLearn] = allAttacks.filter(attack => attack.id == attackID);
+
+                if(hero.level < attackToLearn.levelRequired) {
+                    return;
+                }
+
+                set((state) => ({
+                    hero: {
+                        ...state.hero,
+                        attacks: [...state.hero.attacks, attackToLearn.id]
+                    }
+                }))
             },
         }),
         { name: 'store', version: 0.1 }

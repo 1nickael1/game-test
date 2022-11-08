@@ -38,4 +38,5 @@ export interface StoreType {
     endBattle: () => void;
     levelUp: (XpReceived: number) => void;
     getRandomNumberBetweenMaxAndMin: (max: number, min: number) => number;
+    learnAttack: (attackID: number) => void;
 }

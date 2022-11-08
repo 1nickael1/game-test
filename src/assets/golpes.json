@@ -1,14 +1,44 @@
 [
     {
         "id": 1,
-        "name": "Dynamic Entry",
-        "damage": 30,
-        "image": "/taijutsu/dynamic_entry.jpg"
+        "name": "Soco",
+        "damage": 10,
+        "image": "/taijutsu/soco.jpg",
+        "levelRequired": 0
     },
     {
         "id": 2,
         "name": "Dynamic Kick",
         "damage": 20,
-        "image": "/taijutsu/chute_dinamico.jpg"
+        "image": "/taijutsu/chute_dinamico.jpg",
+        "levelRequired": 2
+    },
+    {
+        "id": 3,
+        "name": "Dynamic Entry",
+        "damage": 30,
+        "image": "/taijutsu/dynamic_entry.jpg",
+        "levelRequired": 3
+    },
+    {
+        "id": 4,
+        "name": "Konoha Full Kick Soccer",
+        "damage": 50,
+        "image": "/taijutsu/konoha_full_kick_soccer.jpg",
+        "levelRequired": 4
+    },
+    {
+        "id": 5,
+        "name": "Konoha Senpuu",
+        "damage": 80,
+        "image": "/taijutsu/chute_furacao.jpg",
+        "levelRequired": 5
+    },
+    {
+        "id": 6,
+        "name": "Gangeki",
+        "damage": 130,
+        "image": "/taijutsu/golpe_ombro.jpg",
+        "levelRequired": 6
     }
 ]

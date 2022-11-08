@@ -1,0 +1,51 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .listaHabilidades {
+        border: 1px solid rgba(grey, 0.2);
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .listaDeGolpes {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+
+            .golpe {
+                width: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+
+                p {
+                    margin: 0;
+                }
+
+                button {
+                    border: 1px solid rgba(grey, 0.2);
+                    border-radius: 4px;
+                    transition: all 0.2s ease-in-out;
+
+                    &:hover {
+                        background-color: rgba(blue, 0.2);
+                    }
+
+                    &.disabled {
+                        background-color: rgba(red, 0.5);
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}

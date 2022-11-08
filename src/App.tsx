@@ -1,105 +1,15 @@
-import { useState, useEffect } from 'react'
-import shallow from 'zustand/shallow';
 
-import style from 'styles/Home.module.scss';
-import golpes from 'assets/golpes.json';
 
-import { useStore } from 'store';
+import Header from "components/Header";
+import { Router } from "./routes";
+import styles from 'styles/Global.module.scss';
 
-export default function index() {
-
-  const { storeHero, storeEnemy, batalhar, atacar, batteLog, endBattle } = useStore(
-    (store) => ({
-      storeHero: store.hero,
-      storeEnemy: store.enemy,
-      batalhar: store.lutar,
-      atacar: store.attack,
-      batteLog: store.battleLog,
-      endBattle: store.endBattle
-    }));
-
-  useEffect(() => {
-    
-  },[]);
-
-  function iniciarBatalha() {
-    batalhar();
-  }
-  
-  function golpear(id: number) {
-    atacar(id);
-  }
-
-  function encerrarBatalha() {
-    endBattle();
-  }
-
+export default function App() {
   return (
-    <div className={style.container}>
-      <div className={style.battleContainer}>
-        <div className={style.hero}>
-            <div className={style.heroInfo}>
-              <p>{storeHero.name} level: {storeHero.level}</p>
-              <div className={style.heroXpBar}>
-                <div style={{'width': `${storeHero.xp.percent}%`}} className={style.heroXpBarColor}>
-                  <p className={style.percent}>{storeHero.xp.actual}/{storeHero.xp.max}</p>
-                </div>
-              </div>
-            </div>
-            {
-              storeEnemy !== null && (
-                <div className={style.golpes}>
-                  {
-                    storeHero.attacks.map((golpeID: number, index: number) => {
-                    let [golpe] = golpes.filter(e => e.id == golpeID);
-
-                      return (
-                        <button onClick={() => golpear(golpeID)} key={index}>
-                          <p>{golpe.name}</p>
-                          <img src={golpe.image} alt={golpe.name} />
-                        </button>
-                      )
-                    })
-                  }
-                </div>
-              )
-            }
-
-          {
-            storeEnemy !== null && (
-              <button onClick={encerrarBatalha}>Desistir</button>
-            )
-          }
-        </div>
-        <div className={style.enemy}>
-          {
-            storeEnemy == null ? (
-              <div>
-                <button onClick={() => iniciarBatalha()}>Batalhar</button>
-              </div>
-            ) : (
-              <div className={style.enemyLog}>
-                <div>{storeEnemy.name} level: {storeEnemy.level}</div>
-                <div>Life: {storeEnemy.life}</div>
-                <div className={style.lifeBar}>
-                  <div style={{'width': `${storeEnemy.lifePercent}%`}} className={style.lifeBarColor}>
-                    <p className={style.percent}>{storeEnemy.lifePercent}%</p>
-                  </div>
-                </div>
-              </div>
-            )
-          }
-        </div>
-      </div>
-        {batteLog.length > 0 && (
-          <div className={style.battleLog}>
-            {
-              batteLog.map((e, index) => (
-                <p key={index}>{e}</p>
-              ))
-            }
-          </div>
-        )}
+    <div className={styles.container}>
+      <Header />
+      <Router />
+      <footer>Versão 0.1</footer>
     </div>
-  );
+  )
 }
