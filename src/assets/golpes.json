@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "Dynamic Entry",
+        "damage": 30,
+        "image": "/taijutsu/dynamic_entry.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Dynamic Kick",
+        "damage": 20,
+        "image": "/taijutsu/chute_dinamico.jpg"
+    }
+]

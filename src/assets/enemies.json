@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Inimigo 1",
+        "life": 53,
+        "defense": 10,
+        "level": 1,
+        "lifePercent": 100
+    },
+    {
+        "id": 2,
+        "name": "Inimigo 2",
+        "life": 72,
+        "defense": 20,
+        "level": 2,
+        "lifePercent": 100
+    },
+    {
+        "id": 3,
+        "name": "Inimigo 3",
+        "life": 113,
+        "defense": 20,
+        "level": 3,
+        "lifePercent": 100
+    }
+]
