@@ -54,7 +54,7 @@ export const BattlePage = () => {
                     let [golpe] = golpes.filter(e => e.id == golpeID);
 
                       return (
-                        <button title={`${golpe.name} cause ${golpe.damage} de dano`} onClick={() => golpear(golpeID)} key={index}>
+                        <button title={`${golpe.name} causa ${golpe.damage} de dano`} onClick={() => golpear(golpeID)} key={index}>
                           <img src={golpe.image} alt={golpe.name} />
                         </button>
                       )
