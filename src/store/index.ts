@@ -131,6 +131,7 @@ export const useStore = create(
                 const actualXp = get().hero.xp;
                 const actualHeroLevel = get().hero.level;
                 const actualHeroLifeMax = get().hero.life.max;
+                const actualHeroDefense = get().hero.defense;
 
                 let newXp = actualXp.actual + XpReceived;
 
@@ -140,6 +141,7 @@ export const useStore = create(
                     let newXpMax = Math.round(actualXp.max + (actualXp.max * 1.2));
                     let newLevel = actualHeroLevel + 1;
                     let newLifeMax = Math.round((actualHeroLifeMax * 1.2) + (actualHeroLifeMax * 0.2));
+                    let newDefense = Math.round((actualHeroDefense * 1.2) + (actualHeroDefense * 0.2));
                     const xpPercent = Math.round((newXpValue / newXpMax) * 100);
                     
                     set((state) => ({
@@ -147,6 +149,7 @@ export const useStore = create(
                         hero: {
                             ...state.hero,
                             level: newLevel,
+                            defense: newDefense,
                             xp: {
                                 actual: newXpValue,
                                 max: newXpMax,
