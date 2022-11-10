@@ -10,7 +10,9 @@
             list-style: none;
             gap: 10px;
             li {
-
+                &.active {
+                    color: rgba(red, 0.8);
+                }
             }
         }
     }

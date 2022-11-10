@@ -8,7 +8,7 @@ import bosses from 'assets/bosses.json';
 
 export const bonusAttack = 2;
 export const bonusDefense = 2;
-export const bonusLife = 5;
+export const bonusLife = 10;
 
 export const useStore = create(
     persist<StoreType>(
@@ -33,7 +33,7 @@ export const useStore = create(
                     defense: 0,
                     life: 0
                 },
-                pointsAvailable: 1,
+                pointsAvailable: 10,
             },
             enemy: null,
             battleLog: [],
@@ -81,7 +81,7 @@ export const useStore = create(
     
                     if (newEnemy.life <= 0) {
                         // @ts-ignore
-                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + ((newHero.level * newEnemy.level) * 1.9), (originalEnemy.life * 0.2));
+                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + ((newHero.level * newEnemy.level) * 1.9), (originalEnemy.life * 0.6));
 
                         levelUp(XpReceived);
 
@@ -163,6 +163,7 @@ export const useStore = create(
                 const actualHeroDefense = get().hero.defense;
                 const actualHeroPointsAvailable = get().hero.pointsAvailable;
                 const actualHeroAttributes = get().hero.attributes;
+                const { getRandomNumberBetweenMaxAndMin } = get();
 
                 let newXp = actualXp.actual + XpReceived;
 
@@ -179,12 +180,12 @@ export const useStore = create(
                     let newDefense = Math.round((actualHeroDefense * 1.2) + (actualHeroDefense * 0.2));
 
                     function pointToReceive() {
-                        if(actualHeroLevel <= 4) {
+                        if(newLevel <= 4) {
                             return 3;
-                        } else if(actualHeroLevel <= 6) {
+                        } else if(newLevel <= 6) {
                             return 5;
                         } else {
-                            return 10;
+                            return getRandomNumberBetweenMaxAndMin(10 + newLevel, 10);
                         }
                     }
 

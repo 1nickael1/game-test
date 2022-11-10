@@ -8,6 +8,7 @@ import boss from 'assets/bosses.json';
 import { useStore } from 'store';
 
 export const BattlePage = () => {
+  const [lastAttack, setLastAttack] = useState(0);
 
   const { storeHero, storeEnemy, batalhar, atacar, batteLog, endBattle } = useStore(
     (store) => ({
@@ -20,14 +21,17 @@ export const BattlePage = () => {
     }));
 
   useEffect(() => {
-    
-  },[]);
+    setLastAttack(0)
+  },[storeEnemy == null]);
 
   function iniciarBatalha(type: 'normal' | number) {
     batalhar(type);
   }
   
   function golpear(id: number) {
+    if(storeHero.attacks.length > 5) {
+      setLastAttack(id);
+    }
     atacar(id);
   }
 
@@ -62,7 +66,7 @@ export const BattlePage = () => {
                     let [golpe] = golpes.filter(e => e.id == golpeID);
 
                       return (
-                        <button title={`${golpe.name} causa ${golpe.damage} de dano`} onClick={() => golpear(golpeID)} key={index}>
+                        <button disabled={golpeID == lastAttack} title={`${golpe.name} causa ${golpe.damage} de dano`} onClick={() => golpear(golpeID)} key={index}>
                           <img src={golpe.image} alt={golpe.name} />
                         </button>
                       )

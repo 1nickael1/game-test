@@ -66,6 +66,10 @@
                     &:active {
                         background-color: rgba(blue, 0.7);
                     }
+                    &:disabled {
+                        background-color: rgba(black, 0.2);
+                        opacity: 0.2;
+                    }
 
                 }
             }

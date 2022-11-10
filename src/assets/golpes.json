@@ -40,5 +40,19 @@
         "damage": 130,
         "image": "/taijutsu/golpe_ombro.jpg",
         "levelRequired": 6
+    },
+    {
+        "id": 7,
+        "name": "Gorai Renge",
+        "damage": 190,
+        "image": "/taijutsu/gorai_renge.jpg",
+        "levelRequired": 7
+    },
+    {
+        "id": 8,
+        "name": "Gorai Renge",
+        "damage": 250,
+        "image": "/taijutsu/kekkei_portao.jpg",
+        "levelRequired": 8
     }
 ]
