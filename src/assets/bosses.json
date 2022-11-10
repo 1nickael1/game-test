@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "name": "Itachi Uchiha (Hard)",
+        "life": 1500,
+        "defense": 140,
+        "level": 8,
+        "lifePercent": 100,
+        "image": "/characters/ItachiUchiha.png",
+        "attacks": [6],
+        "type": "boss"
+    },
+    {
+        "id": 2,
+        "name": "Tobirama Senju (Hard)",
+        "life": 2500,
+        "defense": 170,
+        "level": 10,
+        "lifePercent": 100,
+        "image": "/characters/TobiramaSenju.png",
+        "attacks": [6],
+        "type": "boss"
+    }
+]

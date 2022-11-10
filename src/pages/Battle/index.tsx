@@ -3,6 +3,7 @@ import shallow from 'zustand/shallow';
 
 import style from 'styles/Battle.module.scss';
 import golpes from 'assets/golpes.json';
+import boss from 'assets/bosses.json';
 
 import { useStore } from 'store';
 
@@ -22,8 +23,8 @@ export const BattlePage = () => {
     
   },[]);
 
-  function iniciarBatalha() {
-    batalhar();
+  function iniciarBatalha(type: 'normal' | number) {
+    batalhar(type);
   }
   
   function golpear(id: number) {
@@ -81,7 +82,7 @@ export const BattlePage = () => {
           {
             storeEnemy == null ? (
               <div>
-                <button onClick={() => iniciarBatalha()}>Batalhar</button>
+                <button onClick={() => iniciarBatalha('normal')}>Batalhar</button>
               </div>
             ) : (
               <div className={style.enemyLog}>
@@ -95,6 +96,19 @@ export const BattlePage = () => {
                 </div>
               </div>
             )
+          }
+          
+          {
+            storeEnemy == null && storeHero.level >= 5 && (
+                boss.map((boss, index) => (
+                  <button onClick={() => iniciarBatalha(boss.id)} key={index}>
+                    <p>Batalhar contra boss:</p>
+                    <p>{boss.name}</p>
+                    <p>Level: {boss.level}</p>
+                    <p>Life: {boss.life}</p>
+                  </button>
+                ))
+              )
           }
         </div>
       </div>

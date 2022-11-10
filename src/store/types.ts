@@ -20,6 +20,12 @@ export interface EnemyType {
     lifePercent: number;
     image: string;
     attacks: number[];
+    type: TypeOfEnemy | string;
+}
+
+enum TypeOfEnemy {
+    "normal",
+    "boss"
 }
 
 interface XpType {
@@ -50,7 +56,7 @@ export interface StoreType {
     enemy: null | EnemyType;
     battleLog: string[];
     attack: (attackID: number) => void;
-    startBattle: () => void;
+    startBattle: (type: 'normal' | number) => void;
     endBattle: () => void;
     levelUp: (XpReceived: number) => void;
     getRandomNumberBetweenMaxAndMin: (max: number, min: number) => number;

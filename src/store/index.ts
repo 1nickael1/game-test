@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 import { EnemyType, GolpesType, HeroType, StoreType } from './types';
 import golpes from 'assets/golpes.json';
 import enemies from 'assets/enemies.json';
+import bosses from 'assets/bosses.json';
 
 export const bonusAttack = 2;
 export const bonusDefense = 2;
@@ -43,8 +44,14 @@ export const useStore = create(
                 let newEnemy = enemyCopy == null ? null : {...enemy};
                 let newHero = {...hero};
                 if(newEnemy !== null) {
-                    // @ts-ignore
-                    const [originalEnemy] = enemies.filter(e => e.id == newEnemy.id);
+                    let originalEnemy: EnemyType;
+                    if(newEnemy.type == 'normal') {
+                        // @ts-ignore
+                        originalEnemy = enemies.filter(e => e.id == newEnemy.id)[0];
+                    } else {
+                        // @ts-ignore
+                        originalEnemy = bosses.filter(e => e.id == newEnemy.id)[0];
+                    }
 
                     const golpeAleatorio = originalEnemy.attacks[getRandomNumberBetweenMaxAndMin(originalEnemy.attacks.length - 1, 0)]
 
@@ -111,22 +118,29 @@ export const useStore = create(
                     }));
                 }
             },
-            startBattle: () => {
-                const { getRandomNumberBetweenMaxAndMin, hero } = get();
-                
-                const maxLevelEnabled = (hero.level + 1) >= 7 ? 7 : hero.level + 1;
-                const minLevelEnabled = (hero.level - 1) <= 0 ? 1 : (hero.level - 1);
+            startBattle: (type) => {
 
-                const randomEnemyLevel = getRandomNumberBetweenMaxAndMin(maxLevelEnabled, minLevelEnabled > maxLevelEnabled ? maxLevelEnabled : minLevelEnabled);
+                if(type === 'normal') {
+                    const { getRandomNumberBetweenMaxAndMin, hero } = get();
+                    
+                    const maxLevelEnabled = (hero.level + 1) >= 7 ? 7 : hero.level + 1;
+                    const minLevelEnabled = (hero.level - 1) <= 0 ? 1 : (hero.level - 1);
+    
+                    const randomEnemyLevel = getRandomNumberBetweenMaxAndMin(maxLevelEnabled, minLevelEnabled > maxLevelEnabled ? maxLevelEnabled : minLevelEnabled);
+    
+                    const getEnemiesBetweenLevel = enemies.filter(e => e.level == randomEnemyLevel);
+    
+                    let maxEnemies = getEnemiesBetweenLevel.length - 1;
+    
+                    let enemyRandom = getRandomNumberBetweenMaxAndMin(maxEnemies, 0);
+    
+                    let newEnemy: EnemyType = getEnemiesBetweenLevel.filter((_, index) => index == enemyRandom)[0];
+                    set(() => ({ enemy: {...newEnemy}, battleLog: [] }));
+                } else {
+                    const getBoss: EnemyType = bosses.filter(e => e.id == type)[0];
 
-                const getEnemiesBetweenLevel = enemies.filter(e => e.level == randomEnemyLevel);
-
-                let maxEnemies = getEnemiesBetweenLevel.length - 1;
-
-                let enemyRandom = getRandomNumberBetweenMaxAndMin(maxEnemies, 0);
-
-                let [newEnemy] = [...getEnemiesBetweenLevel.filter((_, index) => index == enemyRandom)];
-                set(() => ({ enemy: newEnemy, battleLog: [] }));
+                    set(() => ({ enemy: {...getBoss}, battleLog: [] }));
+                }
             },
             endBattle: () => {
                 set((state) => ({ 
