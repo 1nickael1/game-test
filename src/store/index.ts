@@ -36,9 +36,12 @@ export const useStore = create(
                     // @ts-ignore
                     const [originalEnemy] = enemies.filter(e => e.id == newEnemy.id);
 
-                    const [golpeInimigo] = golpes.filter((golpe: GolpesType) => {
-                        return golpe.id == originalEnemy.attacks[getRandomNumberBetweenMaxAndMin(originalEnemy.attacks.length - 1, 0)]
-                    });
+                    const golpeAleatorio = originalEnemy.attacks[getRandomNumberBetweenMaxAndMin(originalEnemy.attacks.length - 1, 0)]
+
+                    const golpeInimigo = golpes.filter((golpe: GolpesType) => {
+                        return golpe.id == golpeAleatorio;
+                    })[0];
+
 
                     const danoOfEnemy = getRandomNumberBetweenMaxAndMin(((golpeInimigo.damage * 1.1) + originalEnemy.level), golpeInimigo.damage);
 
@@ -127,6 +130,7 @@ export const useStore = create(
             levelUp(XpReceived: number) {
                 const actualXp = get().hero.xp;
                 const actualHeroLevel = get().hero.level;
+                const actualHeroLifeMax = get().hero.life.max;
 
                 let newXp = actualXp.actual + XpReceived;
 
@@ -135,6 +139,7 @@ export const useStore = create(
                     let newXpValue = newXp - actualXp.max;
                     let newXpMax = Math.round(actualXp.max + (actualXp.max * 1.2));
                     let newLevel = actualHeroLevel + 1;
+                    let newLifeMax = Math.round((actualHeroLifeMax * 1.2) + (actualHeroLifeMax * 0.2));
                     const xpPercent = Math.round((newXpValue / newXpMax) * 100);
                     
                     set((state) => ({
@@ -149,8 +154,9 @@ export const useStore = create(
                             },
                             life: {
                                 ...state.hero.life,
-                                actual: state.hero.life.max,
-                                percent: 100
+                                actual: newLifeMax,
+                                percent: 100,
+                                max: newLifeMax
                             }
                         },
                         enemy: null
