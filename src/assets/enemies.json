@@ -6,7 +6,8 @@
         "defense": 5,
         "level": 1,
         "lifePercent": 100,
-        "image": "/characters/KibaInuzuka.png"
+        "image": "/characters/KibaInuzuka.png",
+        "attacks": [1]
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
         "defense": 10,
         "level": 1,
         "lifePercent": 100,
-        "image": "/characters/HinataHyuga.png"
+        "image": "/characters/HinataHyuga.png",
+        "attacks": [1]
     },
     {
         "id": 3,
@@ -24,7 +26,8 @@
         "defense": 10,
         "level": 1,
         "lifePercent": 100,
-        "image": "/characters/KurenaiYuhi.png"
+        "image": "/characters/KurenaiYuhi.png",
+        "attacks": [1]
     },
     {
         "id": 4,
@@ -33,7 +36,8 @@
         "defense": 10,
         "level": 2,
         "lifePercent": 100,
-        "image": "/characters/Tenten.png"
+        "image": "/characters/Tenten.png",
+        "attacks": [1]
     },
     {
         "id": 5,
@@ -42,7 +46,8 @@
         "defense": 15,
         "level": 2,
         "lifePercent": 100,
-        "image": "/characters/NejiHyuga.png"
+        "image": "/characters/NejiHyuga.png",
+        "attacks": [1]
     },
     {
         "id": 6,
@@ -51,7 +56,8 @@
         "defense": 15,
         "level": 2,
         "lifePercent": 100,
-        "image": "/characters/RockLee.png"
+        "image": "/characters/RockLee.png",
+        "attacks": [1]
     },
     {
         "id": 7,
@@ -60,7 +66,8 @@
         "defense": 20,
         "level": 3,
         "lifePercent": 100,
-        "image": "/characters/InoYamanaka.png"
+        "image": "/characters/InoYamanaka.png",
+        "attacks": [1]
     },
     {
         "id": 8,
@@ -69,7 +76,8 @@
         "defense": 25,
         "level": 3,
         "lifePercent": 100,
-        "image": "/characters/ShikamaruNara.png"
+        "image": "/characters/ShikamaruNara.png",
+        "attacks": [1]
     },
     {
         "id": 9,
@@ -78,7 +86,8 @@
         "defense": 25,
         "level": 3,
         "lifePercent": 100,
-        "image": "/characters/ChojiAkimichi.png"
+        "image": "/characters/ChojiAkimichi.png",
+        "attacks": [1]
     },
     {
         "id": 10,
@@ -87,7 +96,8 @@
         "defense": 30,
         "level": 4,
         "lifePercent": 100,
-        "image": "/characters/MadaraUchiha.png"
+        "image": "/characters/MadaraUchiha.png",
+        "attacks": [1]
     },
     {
         "id": 11,
@@ -96,7 +106,8 @@
         "defense": 70,
         "level": 5,
         "lifePercent": 100,
-        "image": "/characters/Tobi.png"
+        "image": "/characters/Tobi.png",
+        "attacks": [1]
     },
     {
         "id": 12,
@@ -105,7 +116,8 @@
         "defense": 80,
         "level": 6,
         "lifePercent": 100,
-        "image": "/characters/Pain.png"
+        "image": "/characters/Pain.png",
+        "attacks": [1]
     },
     {
         "id": 13,
@@ -114,6 +126,7 @@
         "defense": 90,
         "level": 7,
         "lifePercent": 100,
-        "image": "/characters/ItachiUchiha.png"
+        "image": "/characters/ItachiUchiha.png",
+        "attacks": [1]
     }
 ]

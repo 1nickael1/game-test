@@ -12,7 +12,7 @@ export const BattlePage = () => {
     (store) => ({
       storeHero: store.hero,
       storeEnemy: store.enemy,
-      batalhar: store.lutar,
+      batalhar: store.startBattle,
       atacar: store.attack,
       batteLog: store.battleLog,
       endBattle: store.endBattle
@@ -40,9 +40,16 @@ export const BattlePage = () => {
         <div className={style.hero}>
             <div className={style.heroInfo}>
               <p>{storeHero.name} level: {storeHero.level}</p>
+              <div>XP</div>
               <div className={style.heroXpBar}>
                 <div style={{'width': `${storeHero.xp.percent}%`}} className={style.heroXpBarColor}>
                   <p className={style.percent}>{storeHero.xp.actual}/{storeHero.xp.max}</p>
+                </div>
+              </div>
+              <div>Life: {storeHero.life.actual}</div>
+              <div className={style.lifeBar}>
+                <div style={{'width': `${storeHero.life.percent}%`}} className={style.lifeBarColor}>
+                  <p className={style.percent}>{storeHero.life.percent}%</p>
                 </div>
               </div>
             </div>
@@ -65,7 +72,7 @@ export const BattlePage = () => {
             }
 
           {
-            storeEnemy !== null && (
+            storeEnemy !== null && storeEnemy.level > storeHero.level && (
               <button onClick={encerrarBatalha}>Desistir</button>
             )
           }

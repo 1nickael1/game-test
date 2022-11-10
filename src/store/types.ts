@@ -13,6 +13,7 @@ export interface EnemyType {
     level: number;
     lifePercent: number;
     image: string;
+    attacks: number[];
 }
 
 interface XpType {
@@ -21,9 +22,15 @@ interface XpType {
     percent: number;
 }
 
+interface HeroLifeType {
+    actual: number;
+    max: number;
+    percent: number;
+}
+
 export interface HeroType {
     name: string;
-    life: number;
+    life: HeroLifeType;
     defense: number;
     level: number;
     attacks: number[];
@@ -35,7 +42,7 @@ export interface StoreType {
     enemy: null | EnemyType;
     battleLog: string[];
     attack: (attackID: number) => void;
-    lutar: () => void;
+    startBattle: () => void;
     endBattle: () => void;
     levelUp: (XpReceived: number) => void;
     getRandomNumberBetweenMaxAndMin: (max: number, min: number) => number;

@@ -9,7 +9,7 @@ export default function App() {
     <div className={styles.container}>
       <Header />
       <Router />
-      <footer>Versão 0.1</footer>
+      <footer>Versão 0.2</footer>
     </div>
   )
 }
