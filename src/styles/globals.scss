@@ -16,6 +16,13 @@ a {
   box-sizing: border-box;
 }
 
+img, p, button {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
+
 
 /* @media (prefers-color-scheme: dark) {
   html {

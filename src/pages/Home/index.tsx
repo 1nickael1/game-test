@@ -19,7 +19,7 @@ export const HomePage = () => {
                         <p className={style.percent}>{storeHero.xp.actual}/{storeHero.xp.max}</p>
                     </div>
                 </div>
-                <div>Life: {storeHero.life.actual}</div>
+                <p>Life: {storeHero.life.actual}</p>
                 <div className={style.lifeBar}>
                     <div style={{'width': `${storeHero.life.percent}%`}} className={style.lifeBarColor}>
                     <p className={style.percent}>{storeHero.life.percent}%</p>

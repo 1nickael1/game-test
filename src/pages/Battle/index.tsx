@@ -40,13 +40,13 @@ export const BattlePage = () => {
         <div className={style.hero}>
             <div className={style.heroInfo}>
               <p>{storeHero.name} level: {storeHero.level}</p>
-              <div>XP</div>
+              <p>XP</p>
               <div className={style.heroXpBar}>
                 <div style={{'width': `${storeHero.xp.percent}%`}} className={style.heroXpBarColor}>
                   <p className={style.percent}>{storeHero.xp.actual}/{storeHero.xp.max}</p>
                 </div>
               </div>
-              <div>Life: {storeHero.life.actual}</div>
+              <p>Life: {storeHero.life.actual}</p>
               <div className={style.lifeBar}>
                 <div style={{'width': `${storeHero.life.percent}%`}} className={style.lifeBarColor}>
                   <p className={style.percent}>{storeHero.life.percent}%</p>
@@ -86,8 +86,8 @@ export const BattlePage = () => {
             ) : (
               <div className={style.enemyLog}>
                 <img src={storeEnemy.image} alt={storeEnemy.name} />
-                <div>{storeEnemy.name} level: {storeEnemy.level}</div>
-                <div>Life: {storeEnemy.life}</div>
+                <p>{storeEnemy.name} level: {storeEnemy.level}</p>
+                <p>Life: {storeEnemy.life}</p>
                 <div className={style.lifeBar}>
                   <div style={{'width': `${storeEnemy.lifePercent}%`}} className={style.lifeBarColor}>
                     <p className={style.percent}>{storeEnemy.lifePercent}%</p>
