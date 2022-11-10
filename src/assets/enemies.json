@@ -112,8 +112,8 @@
     {
         "id": 12,
         "name": "Pain",
-        "life": 700,
-        "defense": 80,
+        "life": 800,
+        "defense": 90,
         "level": 6,
         "lifePercent": 100,
         "image": "/characters/Pain.png",
@@ -122,8 +122,8 @@
     {
         "id": 13,
         "name": "Itachi Uchiha",
-        "life": 900,
-        "defense": 90,
+        "life": 1000,
+        "defense": 100,
         "level": 7,
         "lifePercent": 100,
         "image": "/characters/ItachiUchiha.png",
