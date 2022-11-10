@@ -81,7 +81,7 @@ export const useStore = create(
     
                     if (newEnemy.life <= 0) {
                         // @ts-ignore
-                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + ((newHero.level * newEnemy.level) * 1.9), 10);
+                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + ((newHero.level * newEnemy.level) * 1.9), (originalEnemy.life * 0.2));
 
                         levelUp(XpReceived);
 
@@ -177,7 +177,19 @@ export const useStore = create(
 
                     let newLifeMax = Math.round((actualHeroLifeWithoutBonuts * 1.2) + (actualHeroLifeWithoutBonuts * 0.2) + actualLifeBonus);
                     let newDefense = Math.round((actualHeroDefense * 1.2) + (actualHeroDefense * 0.2));
-                    let newPointsAvailable = actualHeroPointsAvailable + 3;
+
+                    function pointToReceive() {
+                        if(actualHeroLevel <= 4) {
+                            return 3;
+                        } else if(actualHeroLevel <= 6) {
+                            return 5;
+                        } else {
+                            return 10;
+                        }
+                    }
+
+                    let newPointsAvailable = actualHeroPointsAvailable + pointToReceive();
+
                     const xpPercent = Math.round((newXpValue / newXpMax) * 100);
                     
                     set((state) => ({
