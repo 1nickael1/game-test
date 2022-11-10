@@ -107,7 +107,7 @@
         "level": 5,
         "lifePercent": 100,
         "image": "/characters/Tobi.png",
-        "attacks": [1, 2, 3, 4, 5]
+        "attacks": [2, 3, 4, 5]
     },
     {
         "id": 12,
@@ -117,7 +117,7 @@
         "level": 6,
         "lifePercent": 100,
         "image": "/characters/Pain.png",
-        "attacks": [1, 2, 3, 4, 5, 6]
+        "attacks": [4, 5, 6]
     },
     {
         "id": 13,
@@ -127,6 +127,6 @@
         "level": 7,
         "lifePercent": 100,
         "image": "/characters/ItachiUchiha.png",
-        "attacks": [1, 2, 3, 4, 5, 6]
+        "attacks": [4, 5, 6]
     }
 ]

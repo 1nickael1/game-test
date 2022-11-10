@@ -7,13 +7,16 @@ export default function Header() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/">Inicio</Link>
                     </li>
                     <li>
-                        <Link to="/battle">Battle</Link>
+                        <Link to="/battle">Batalhar</Link>
                     </li>
                     <li>
-                        <Link to="/skills">Skills</Link>
+                        <Link to="/skills">Habilidades</Link>
+                    </li>
+                    <li>
+                        <Link to="/attributes">Atributos</Link>
                     </li>
                 </ul>
             </nav>

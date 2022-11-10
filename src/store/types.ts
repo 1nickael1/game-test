@@ -5,6 +5,12 @@ export interface GolpesType {
     image: string;
 }
 
+interface Attributes {
+    attack: number;
+    defense: number;
+    life: number;
+}
+
 export interface EnemyType {
     id: number;
     name: string;
@@ -35,6 +41,8 @@ export interface HeroType {
     level: number;
     attacks: number[];
     xp: XpType;
+    attributes: Attributes;
+    pointsAvailable: number;
 }
 
 export interface StoreType {
@@ -47,4 +55,5 @@ export interface StoreType {
     levelUp: (XpReceived: number) => void;
     getRandomNumberBetweenMaxAndMin: (max: number, min: number) => number;
     learnAttack: (attackID: number) => void;
+    learnAttribute: (type: 'attack' | 'defense' | 'life') => void;
 }

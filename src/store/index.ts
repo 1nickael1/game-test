@@ -22,7 +22,13 @@ export const useStore = create(
                     actual: 0,
                     max: 100,
                     percent: 0
-                }
+                },
+                attributes: {
+                    attack: 0,
+                    defense: 0,
+                    life: 0
+                },
+                pointsAvailable: 1,
             },
             enemy: null,
             battleLog: [],
@@ -43,13 +49,18 @@ export const useStore = create(
                     })[0];
 
 
+                    const defenseOfHeroWithAttributes = newHero.attributes.defense * 5;
+                    
                     const danoOfEnemy = getRandomNumberBetweenMaxAndMin(((golpeInimigo.damage * 1.1) + originalEnemy.level), golpeInimigo.damage);
-
-                    const totalDamageOfEnemy = (danoOfEnemy - newHero.defense) <= 0 ? 0 : danoOfEnemy - newHero.defense;
+                    
+                    const totalDamageOfEnemy = (danoOfEnemy - (newHero.defense + defenseOfHeroWithAttributes)) <= 0 ? 0 : danoOfEnemy - (newHero.defense + defenseOfHeroWithAttributes);
                     
                     let [golpe] = golpes.filter((golpe: GolpesType) => golpe.id == attackID);
+
+                    const damageOfHeroWithAttributes = newHero.attributes.attack * 5;
+                    
     
-                    const danoOfHero = getRandomNumberBetweenMaxAndMin(((golpe.damage * 1.1) + newHero.level), golpe.damage);
+                    const danoOfHero = getRandomNumberBetweenMaxAndMin((((golpe.damage * 1.1) + damageOfHeroWithAttributes) + newHero.level ), golpe.damage);
                     // @ts-ignore
                     const totalDamageOfHero = (danoOfHero - newEnemy.defense) <= 0 ? 0 : danoOfHero - newEnemy.defense;
 
@@ -132,6 +143,8 @@ export const useStore = create(
                 const actualHeroLevel = get().hero.level;
                 const actualHeroLifeMax = get().hero.life.max;
                 const actualHeroDefense = get().hero.defense;
+                const actualHeroPointsAvailable = get().hero.pointsAvailable;
+                const actualHeroAttributes = get().hero.attributes;
 
                 let newXp = actualXp.actual + XpReceived;
 
@@ -140,12 +153,19 @@ export const useStore = create(
                     let newXpValue = newXp - actualXp.max;
                     let newXpMax = Math.round(actualXp.max + (actualXp.max * 1.2));
                     let newLevel = actualHeroLevel + 1;
-                    let newLifeMax = Math.round((actualHeroLifeMax * 1.2) + (actualHeroLifeMax * 0.2));
+                    let actualLifeBonus = actualHeroAttributes.life * 5;
+
+                    const actualHeroLifeWithoutBonuts = actualHeroLifeMax - actualLifeBonus;
+
+                    let newLifeMax = Math.round((actualHeroLifeWithoutBonuts * 1.2) + (actualHeroLifeWithoutBonuts * 0.2) + actualLifeBonus);
                     let newDefense = Math.round((actualHeroDefense * 1.2) + (actualHeroDefense * 0.2));
+                    let newPointsAvailable = actualHeroPointsAvailable + newLevel;
                     const xpPercent = Math.round((newXpValue / newXpMax) * 100);
                     
                     set((state) => ({
-                        battleLog: [ `Você venceu a batalha`, `Você está no level ${newLevel}`],
+                        battleLog: [ 
+                            `Você venceu a batalha`, 
+                            `Você está no level ${newLevel} e está com ${newPointsAvailable} pontos disponiveis`],
                         hero: {
                             ...state.hero,
                             level: newLevel,
@@ -160,7 +180,8 @@ export const useStore = create(
                                 actual: newLifeMax,
                                 percent: 100,
                                 max: newLifeMax
-                            }
+                            },
+                            pointsAvailable: newPointsAvailable
                         },
                         enemy: null
                     }))
@@ -199,7 +220,61 @@ export const useStore = create(
                     }
                 }))
             },
+            learnAttribute(type) {
+                const { life, attributes, pointsAvailable} = get().hero;
+
+                if(pointsAvailable <= 0) return;
+                
+                if(type === 'attack') {
+                    set((state) => ({
+                        hero: {
+                            ...state.hero,
+                            attributes: {
+                                ...state.hero.attributes,
+                                attack: state.hero.attributes.attack + 1
+                            },
+                            pointsAvailable: state.hero.pointsAvailable - 1
+                        }
+                    }))
+                }
+
+                if(type === 'defense') {
+                    set((state) => ({
+                        hero: {
+                            ...state.hero,
+                            attributes: {
+                                ...state.hero.attributes,
+                                defense: state.hero.attributes.defense + 1
+                            },
+                            pointsAvailable: state.hero.pointsAvailable - 1
+                        }
+                    }))
+                }
+
+                if(type === 'life') {
+                    const actualLifeBonus = attributes.life * 5;
+                    const actualHeroLifeWithoutBonuts = life.max - actualLifeBonus;
+                    const newLifeBonus = (attributes.life + 1) * 5;
+                    const newHeroLifeWithBonus = actualHeroLifeWithoutBonuts + newLifeBonus;
+
+                    set((state) => ({
+                        hero: {
+                            ...state.hero,
+                            life: {
+                                ...state.hero.life,
+                                actual: newHeroLifeWithBonus,
+                                max: newHeroLifeWithBonus,
+                            },
+                            attributes: {
+                                ...state.hero.attributes,
+                                life: state.hero.attributes.life + 1,
+                            },
+                            pointsAvailable: state.hero.pointsAvailable - 1
+                        }
+                    }))
+                }
+            },
         }),
-        { name: 'store', version: 0.2 }
+        { name: 'store', version: 0.3 }
     )
 )
