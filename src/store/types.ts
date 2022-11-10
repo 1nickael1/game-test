@@ -56,4 +56,5 @@ export interface StoreType {
     getRandomNumberBetweenMaxAndMin: (max: number, min: number) => number;
     learnAttack: (attackID: number) => void;
     learnAttribute: (type: 'attack' | 'defense' | 'life') => void;
+    removeAttribute: (type: 'attack' | 'defense' | 'life') => void;
 }

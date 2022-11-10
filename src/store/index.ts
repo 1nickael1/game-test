@@ -5,6 +5,10 @@ import { EnemyType, GolpesType, HeroType, StoreType } from './types';
 import golpes from 'assets/golpes.json';
 import enemies from 'assets/enemies.json';
 
+export const bonusAttack = 2;
+export const bonusDefense = 2;
+export const bonusLife = 5;
+
 export const useStore = create(
     persist<StoreType>(
         (set, get) => ({
@@ -49,7 +53,7 @@ export const useStore = create(
                     })[0];
 
 
-                    const defenseOfHeroWithAttributes = newHero.attributes.defense * 5;
+                    const defenseOfHeroWithAttributes = newHero.attributes.defense * bonusDefense;
                     
                     const danoOfEnemy = getRandomNumberBetweenMaxAndMin(((golpeInimigo.damage * 1.1) + originalEnemy.level), golpeInimigo.damage);
                     
@@ -57,7 +61,7 @@ export const useStore = create(
                     
                     let [golpe] = golpes.filter((golpe: GolpesType) => golpe.id == attackID);
 
-                    const damageOfHeroWithAttributes = newHero.attributes.attack * 5;
+                    const damageOfHeroWithAttributes = newHero.attributes.attack * bonusAttack;
                     
     
                     const danoOfHero = getRandomNumberBetweenMaxAndMin((((golpe.damage * 1.1) + damageOfHeroWithAttributes) + newHero.level ), golpe.damage);
@@ -153,13 +157,13 @@ export const useStore = create(
                     let newXpValue = newXp - actualXp.max;
                     let newXpMax = Math.round(actualXp.max + (actualXp.max * 1.2));
                     let newLevel = actualHeroLevel + 1;
-                    let actualLifeBonus = actualHeroAttributes.life * 5;
+                    let actualLifeBonus = actualHeroAttributes.life * bonusLife;
 
                     const actualHeroLifeWithoutBonuts = actualHeroLifeMax - actualLifeBonus;
 
                     let newLifeMax = Math.round((actualHeroLifeWithoutBonuts * 1.2) + (actualHeroLifeWithoutBonuts * 0.2) + actualLifeBonus);
                     let newDefense = Math.round((actualHeroDefense * 1.2) + (actualHeroDefense * 0.2));
-                    let newPointsAvailable = actualHeroPointsAvailable + newLevel;
+                    let newPointsAvailable = actualHeroPointsAvailable + 3;
                     const xpPercent = Math.round((newXpValue / newXpMax) * 100);
                     
                     set((state) => ({
@@ -252,9 +256,9 @@ export const useStore = create(
                 }
 
                 if(type === 'life') {
-                    const actualLifeBonus = attributes.life * 5;
+                    const actualLifeBonus = attributes.life * bonusLife;
                     const actualHeroLifeWithoutBonuts = life.max - actualLifeBonus;
-                    const newLifeBonus = (attributes.life + 1) * 5;
+                    const newLifeBonus = (attributes.life + 1) * bonusLife;
                     const newHeroLifeWithBonus = actualHeroLifeWithoutBonuts + newLifeBonus;
 
                     set((state) => ({
@@ -270,6 +274,65 @@ export const useStore = create(
                                 life: state.hero.attributes.life + 1,
                             },
                             pointsAvailable: state.hero.pointsAvailable - 1
+                        }
+                    }))
+                }
+            },
+            removeAttribute(type) {
+                const { life, attributes, pointsAvailable} = get().hero;
+
+                
+                if(type === 'attack') {
+                    if(attributes.attack <= 0) return;
+
+                    set((state) => ({
+                        hero: {
+                            ...state.hero,
+                            attributes: {
+                                ...state.hero.attributes,
+                                attack: state.hero.attributes.attack - 1
+                            },
+                            pointsAvailable: state.hero.pointsAvailable + 1
+                        }
+                    }))
+                }
+
+                if(type === 'defense') {
+                    if(attributes.defense <= 0) return;
+
+                    set((state) => ({
+                        hero: {
+                            ...state.hero,
+                            attributes: {
+                                ...state.hero.attributes,
+                                defense: state.hero.attributes.defense - 1
+                            },
+                            pointsAvailable: state.hero.pointsAvailable + 1
+                        }
+                    }))
+                }
+
+                if(type === 'life') {
+                    if(attributes.life <= 0) return;
+
+                    const actualLifeBonus = attributes.life * bonusLife;
+                    const actualHeroLifeWithoutBonuts = life.max - actualLifeBonus;
+                    const newLifeBonus = (attributes.life - 1) * bonusLife;
+                    const newHeroLifeWithBonus = actualHeroLifeWithoutBonuts + newLifeBonus;
+
+                    set((state) => ({
+                        hero: {
+                            ...state.hero,
+                            life: {
+                                ...state.hero.life,
+                                actual: newHeroLifeWithBonus,
+                                max: newHeroLifeWithBonus,
+                            },
+                            attributes: {
+                                ...state.hero.attributes,
+                                life: state.hero.attributes.life - 1,
+                            },
+                            pointsAvailable: state.hero.pointsAvailable + 1
                         }
                     }))
                 }
