@@ -88,7 +88,8 @@ export const useStore = create(
 
                     const defenseOfHeroWithAttributes = Math.round(newHero.attributes.defense / bonusDefense);
                     
-                    const danoOfEnemy = getRandomNumberBetweenMaxAndMin(((golpeInimigo.damage * 1.1) + originalEnemy.level), golpeInimigo.damage);
+                    // @ts-ignore
+                    const danoOfEnemy = getRandomNumberBetweenMaxAndMin((defenseOfHeroWithAttributes + newEnemy.defense + golpeInimigo.damage), defenseOfHeroWithAttributes);
                     
                     const totalDamageOfEnemy = (danoOfEnemy - (newHero.defense + defenseOfHeroWithAttributes)) <= 0 ? 0 : danoOfEnemy - (newHero.defense + defenseOfHeroWithAttributes);
                     
