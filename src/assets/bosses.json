@@ -7,7 +7,7 @@
         "level": 10,
         "lifePercent": 100,
         "image": "/characters/ItachiUchiha.png",
-        "attacks": [6, 7, 8],
+        "attacks": [8, 9],
         "type": "boss"
     },
     {
@@ -18,7 +18,7 @@
         "level": 12,
         "lifePercent": 100,
         "image": "/characters/TobiramaSenju.png",
-        "attacks": [7, 8, 9],
+        "attacks": [8, 9],
         "type": "boss"
     },
     {
@@ -29,7 +29,7 @@
         "level": 100,
         "lifePercent": 100,
         "image": "/characters/KaguyaOtsutsuki.png",
-        "attacks": [7, 8, 9],
+        "attacks": [8, 9],
         "type": "boss"
     }
 ]
