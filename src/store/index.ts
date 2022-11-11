@@ -20,7 +20,7 @@ export const useStore = create(
                     max: 100,
                     percent: 100
                 },
-                defense: 10,
+                defense: 1,
                 level: 1,
                 attacks: [1],
                 xp: {
@@ -89,7 +89,9 @@ export const useStore = create(
                     const defenseOfHeroWithAttributes = Math.round(newHero.attributes.defense / bonusDefense);
                     
                     // @ts-ignore
-                    const danoOfEnemy = getRandomNumberBetweenMaxAndMin((defenseOfHeroWithAttributes + newEnemy.defense + golpeInimigo.damage), defenseOfHeroWithAttributes);
+                    // const danoOfEnemy = getRandomNumberBetweenMaxAndMin((golpeInimigo.damage * newEnemy.level), newHero.defense);
+                    const danoOfEnemy = golpeInimigo.damage + newEnemy.level;
+                    // console.log(danoOfEnemy)
                     
                     const totalDamageOfEnemy = (danoOfEnemy - (newHero.defense + defenseOfHeroWithAttributes)) <= 0 ? 0 : danoOfEnemy - (newHero.defense + defenseOfHeroWithAttributes);
                     
@@ -98,7 +100,8 @@ export const useStore = create(
                     const damageOfHeroWithAttributes = newHero.attributes.attack * bonusAttack;
                     
     
-                    const danoOfHero = getRandomNumberBetweenMaxAndMin((((golpe.damage * 1.1) + damageOfHeroWithAttributes) + newHero.level ), golpe.damage);
+                    // const danoOfHero = getRandomNumberBetweenMaxAndMin(((golpe.damage * newHero.level) + damageOfHeroWithAttributes), golpe.damage + damageOfHeroWithAttributes + (originalEnemy.defense * 0.8));
+                    const danoOfHero = golpe.damage + newHero.level + damageOfHeroWithAttributes;
                     // @ts-ignore
                     const totalDamageOfHero = (danoOfHero - newEnemy.defense) <= 0 ? 0 : danoOfHero - newEnemy.defense;
 
@@ -150,7 +153,7 @@ export const useStore = create(
                 if(type === 'normal') {
                     const { getRandomNumberBetweenMaxAndMin, hero } = get();
                     
-                    const maxLevelEnabled = (hero.level + 1) >= 7 ? 7 : hero.level + 1;
+                    const maxLevelEnabled = (hero.level + 1) >= 9 ? 9 : hero.level + 1;
                     const minLevelEnabled = (hero.level - 1) <= 0 ? 1 : (hero.level - 1);
     
                     const randomEnemyLevel = getRandomNumberBetweenMaxAndMin(maxLevelEnabled, minLevelEnabled > maxLevelEnabled ? maxLevelEnabled : minLevelEnabled);
@@ -162,6 +165,7 @@ export const useStore = create(
                     let enemyRandom = getRandomNumberBetweenMaxAndMin(maxEnemies, 0);
     
                     let newEnemy: EnemyType = getEnemiesBetweenLevel.filter((_, index) => index == enemyRandom)[0];
+
                     set(() => ({ enemy: {...newEnemy}, battleLog: [] }));
                 } else {
                     const getBoss: EnemyType = bosses.filter(e => e.id == type)[0];
@@ -197,14 +201,14 @@ export const useStore = create(
                 
                 if(newXp >= actualXp.max) {
                     let newXpValue = newXp - actualXp.max;
-                    let newXpMax = Math.round(actualXp.max + (actualXp.max * 1.2));
+                    let newXpMax = actualXp.max * 2;
                     let newLevel = actualHeroLevel + 1;
                     let actualLifeBonus = actualHeroAttributes.life * bonusLife;
 
                     const actualHeroLifeWithoutBonuts = actualHeroLifeMax - actualLifeBonus;
 
                     let newLifeMax = Math.round((actualHeroLifeWithoutBonuts * 1.2) + (actualHeroLifeWithoutBonuts * 0.2) + actualLifeBonus);
-                    let newDefense = Math.round((actualHeroDefense * 1.2) + (actualHeroDefense * 0.2));
+                    let newDefense = Math.round((actualHeroDefense * 1.4));
 
                     function pointToReceive() {
                         if(newLevel <= 4) {
@@ -392,6 +396,6 @@ export const useStore = create(
                 }
             },
         }),
-        { name: 'store', version: 0.2 }
+        { name: 'store', version: 0.3 }
     )
 )

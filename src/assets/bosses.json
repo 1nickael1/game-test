@@ -1,20 +1,20 @@
 [
     {
         "id": 1,
-        "name": "Itachi Uchiha (Hard)",
-        "life": 2500,
-        "defense": 250,
+        "name": "Madara Uchiha (Very Hard)",
+        "life": 5000,
+        "defense": 500,
         "level": 10,
         "lifePercent": 100,
-        "image": "/characters/ItachiUchiha.png",
+        "image": "/characters/MadaraUchiha.png",
         "attacks": [8, 9],
         "type": "boss"
     },
     {
         "id": 2,
-        "name": "Tobirama Senju (Hard)",
-        "life": 3500,
-        "defense": 350,
+        "name": "Tobirama Senju (Very Hard)",
+        "life": 1000,
+        "defense": 700,
         "level": 12,
         "lifePercent": 100,
         "image": "/characters/TobiramaSenju.png",
