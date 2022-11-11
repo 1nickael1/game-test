@@ -53,6 +53,32 @@ export const useStore = create(
                         originalEnemy = bosses.filter(e => e.id == newEnemy.id)[0];
                     }
 
+                    if(attackID == 999) {
+                        // @ts-ignore
+                        const finalDamage = newEnemy.life - (originalEnemy.life * 0.2);
+                        newEnemy.life = finalDamage;
+                        newEnemy.lifePercent = Math.round((newEnemy.life / originalEnemy.life) * 100);
+
+                        if (newEnemy.life <= 0) {
+                            // @ts-ignore
+                            const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.1), (newHero.xp.max* 0.1));
+    
+                            levelUp(XpReceived);
+    
+                            return;
+                        }
+
+                        // @ts-ignore
+                        set((state) => ({ 
+                            battleLog: [
+                                ...state.battleLog, 
+                                `Você usou ataque especial e causou ${finalDamage} de dano
+                                `],
+                            enemy: {...newEnemy},
+                        }));
+                        return;
+                    }
+
                     const golpeAleatorio = originalEnemy.attacks[getRandomNumberBetweenMaxAndMin(originalEnemy.attacks.length - 1, 0)]
 
                     const golpeInimigo = golpes.filter((golpe: GolpesType) => {

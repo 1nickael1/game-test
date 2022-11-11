@@ -9,6 +9,7 @@ import { useStore } from 'store';
 
 export const BattlePage = () => {
   const [lastAttack, setLastAttack] = useState(0);
+  const [countAttacks, setCountAttacks] = useState(0);
 
   const { storeHero, storeEnemy, batalhar, atacar, batteLog, endBattle } = useStore(
     (store) => ({
@@ -21,7 +22,8 @@ export const BattlePage = () => {
     }));
 
   useEffect(() => {
-    setLastAttack(0)
+    setLastAttack(0);
+    setCountAttacks(0);
   },[storeEnemy == null]);
 
   function iniciarBatalha(type: 'normal' | number) {
@@ -31,6 +33,12 @@ export const BattlePage = () => {
   function golpear(id: number) {
     if(storeHero.attacks.length > 5) {
       setLastAttack(id);
+    }
+
+    if(id == 999) {
+      setCountAttacks(0);
+    } else {
+      setCountAttacks(prevState => prevState + 1);
     }
     atacar(id);
   }
@@ -73,6 +81,14 @@ export const BattlePage = () => {
                     })
                   }
                 </div>
+              )
+            }
+
+            {
+              storeEnemy !== null && countAttacks >= 15 && (
+                <button title="Ataque especial" onClick={() => golpear(999)}>
+                  <img src="/taijutsu/special_attack.gif" alt="Ataque especial" />
+                </button>
               )
             }
 
