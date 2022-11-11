@@ -60,7 +60,7 @@ export const AttributesPage = () => {
                 <p>Formulas:</p>
                 <div>
                     <p>Ataque: dano de golpe + (ponto * {bonusAttack})</p>
-                    <p>Defesa: dano do inimigo - (ponto * {bonusDefense})</p>
+                    <p>Defesa: dano do inimigo - (ponto / {bonusDefense})</p>
                     <p>Vida: +ponto * {bonusLife}</p>
                 </div>
             </div>
