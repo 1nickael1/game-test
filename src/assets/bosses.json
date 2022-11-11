@@ -20,5 +20,16 @@
         "image": "/characters/TobiramaSenju.png",
         "attacks": [7, 8, 9],
         "type": "boss"
+    },
+    {
+        "id": 3,
+        "name": "Kaguya Otsutsuki (Easy)",
+        "life": 50000,
+        "defense": 1000,
+        "level": 100,
+        "lifePercent": 100,
+        "image": "/characters/KaguyaOtsutsuki.png",
+        "attacks": [7, 8, 9],
+        "type": "boss"
     }
 ]
