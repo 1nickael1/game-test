@@ -54,5 +54,12 @@
         "damage": 250,
         "image": "/taijutsu/kekkei_portao.jpg",
         "levelRequired": 8
+    },
+    {
+        "id": 9,
+        "name": "Asa Kujaku",
+        "damage": 350,
+        "image": "/taijutsu/asa_kujaku.jpg",
+        "levelRequired": 8
     }
 ]
