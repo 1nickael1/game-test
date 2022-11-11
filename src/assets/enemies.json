@@ -194,7 +194,7 @@
         "level": 7,
         "lifePercent": 100,
         "image": "/characters/Pain.png",
-        "attacks": [5, 6, 7, 8],
+        "attacks": [6, 7, 8],
         "type": "normal"
     },
     {
@@ -205,7 +205,7 @@
         "level": 7,
         "lifePercent": 100,
         "image": "/characters/MadaraUchiha.png",
-        "attacks": [6, 7, 8, 9],
+        "attacks": [7, 8, 9],
         "type": "normal"
     }
     
