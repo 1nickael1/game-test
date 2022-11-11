@@ -16,7 +16,7 @@ export const AttributesPage = () => {
             <div className={style.pontosAtuais}>
                 <p>Valores atuais:</p>
                 <div style={{display: 'flex', gap: '10px'}}>
-                    <p>Ataque: +{atributos.attack * bonusAttack}</p>
+                    <p>Ataque: +{atributos.attack / bonusAttack}</p>
                     <p>Defesa: +{Math.round(atributos.defense / bonusDefense)}</p>
                     <p>Vida: +{atributos.life * bonusLife}</p>
                 </div>
@@ -59,7 +59,7 @@ export const AttributesPage = () => {
             <div className={style.pontosAtuais}>
                 <p>Formulas:</p>
                 <div>
-                    <p>Ataque: dano de golpe + (ponto * {bonusAttack})</p>
+                    <p>Ataque: dano de golpe + (ponto / {bonusAttack})</p>
                     <p>Defesa: dano do inimigo - (ponto / {bonusDefense})</p>
                     <p>Vida: +ponto * {bonusLife}</p>
                 </div>

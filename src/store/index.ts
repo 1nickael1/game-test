@@ -97,7 +97,7 @@ export const useStore = create(
                     
                     let [golpe] = golpes.filter((golpe: GolpesType) => golpe.id == attackID);
 
-                    const damageOfHeroWithAttributes = newHero.attributes.attack * bonusAttack;
+                    const damageOfHeroWithAttributes = Math.round(newHero.attributes.attack / bonusAttack);
                     
     
                     // const danoOfHero = getRandomNumberBetweenMaxAndMin(((golpe.damage * newHero.level) + damageOfHeroWithAttributes), golpe.damage + damageOfHeroWithAttributes + (originalEnemy.defense * 0.8));
@@ -216,7 +216,7 @@ export const useStore = create(
                         } else if(newLevel <= 6) {
                             return 5;
                         } else {
-                            return getRandomNumberBetweenMaxAndMin(10 + newLevel, 10);
+                            return 10;
                         }
                     }
 
