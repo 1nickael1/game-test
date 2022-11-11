@@ -81,7 +81,7 @@ export const useStore = create(
     
                     if (newEnemy.life <= 0) {
                         // @ts-ignore
-                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + ((newHero.level * newEnemy.level) * 1.9), (newHero.xp.max* 0.1));
+                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.1), (newHero.xp.max* 0.1));
 
                         levelUp(XpReceived);
 
