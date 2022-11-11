@@ -61,7 +61,7 @@ export const useStore = create(
 
                         if (newEnemy.life <= 0) {
                             // @ts-ignore
-                            const XpReceived = originalEnemy.type ==! 'normal' ? ((originalEnemy.life * 1.5) + (new.hero.xp.max * 0.1)) : getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.1), (newHero.xp.max* 0.1));
+                            const XpReceived = originalEnemy.type ==! 'normal' ? ((originalEnemy.life * 1.5) + (newHero.xp.max * 0.1)) : getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.1), (newHero.xp.max* 0.1));
     
                             levelUp(XpReceived);
     
@@ -111,7 +111,7 @@ export const useStore = create(
     
                     if (newEnemy.life <= 0) {
                         // @ts-ignore
-                        const XpReceived = originalEnemy.type ==! 'normal' ? ((originalEnemy.life * 1.5) + (new.hero.xp.max * 0.1)) : getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.1), (newHero.xp.max* 0.1));
+                        const XpReceived = originalEnemy.type ==! 'normal' ? ((originalEnemy.life * 1.5) + (newHero.xp.max * 0.1)) : getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.1), (newHero.xp.max* 0.1));
 
                         levelUp(XpReceived);
 
