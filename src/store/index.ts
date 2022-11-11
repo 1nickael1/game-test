@@ -55,7 +55,7 @@ export const useStore = create(
 
                     if(attackID == 999) {
                         // @ts-ignore
-                        const finalDamage = newEnemy.life - (originalEnemy.life * 0.05);
+                        const finalDamage = Math.round(newEnemy.life - (originalEnemy.life * 0.05));
                         newEnemy.life = finalDamage;
                         newEnemy.lifePercent = Math.round((newEnemy.life / originalEnemy.life) * 100);
 
