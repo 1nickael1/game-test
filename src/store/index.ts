@@ -55,7 +55,7 @@ export const useStore = create(
 
                     if(attackID == 999) {
                         // @ts-ignore
-                        const finalDamage = newEnemy.life - (originalEnemy.life * 0.2);
+                        const finalDamage = newEnemy.life - (originalEnemy.life * 0.05);
                         newEnemy.life = finalDamage;
                         newEnemy.lifePercent = Math.round((newEnemy.life / originalEnemy.life) * 100);
 
@@ -107,7 +107,7 @@ export const useStore = create(
     
                     if (newEnemy.life <= 0) {
                         // @ts-ignore
-                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.1), (newHero.xp.max* 0.1));
+                        const XpReceived = getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.05), (newHero.xp.max* 0.05));
 
                         levelUp(XpReceived);
 
@@ -391,6 +391,6 @@ export const useStore = create(
                 }
             },
         }),
-        { name: 'store', version: 0.3 }
+        { name: 'store', version: 0.2 }
     )
 )
