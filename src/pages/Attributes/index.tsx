@@ -17,7 +17,7 @@ export const AttributesPage = () => {
                 <p>Valores atuais:</p>
                 <div style={{display: 'flex', gap: '10px'}}>
                     <p>Ataque: +{atributos.attack * bonusAttack}</p>
-                    <p>Defesa: +{atributos.defense * bonusDefense}</p>
+                    <p>Defesa: +{Math.round(atributos.defense / bonusDefense)}</p>
                     <p>Vida: +{atributos.life * bonusLife}</p>
                 </div>
             </div>
