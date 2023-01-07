@@ -55,13 +55,13 @@ export const useStore = create(
 
                     if(attackID == 999) {
                         // @ts-ignore
-                        const finalDamage = Math.round(newEnemy.life - (originalEnemy.life * 0.05));
+                        const finalDamage = Math.round(newEnemy.life - (originalEnemy.life * 0.1));
                         newEnemy.life = finalDamage;
                         newEnemy.lifePercent = Math.round((newEnemy.life / originalEnemy.life) * 100);
 
                         if (newEnemy.life <= 0) {
                             // @ts-ignore
-                            const XpReceived = originalEnemy.type ==! 'normal' ? ((originalEnemy.life * 1.5) + (newHero.xp.max * 0.1)) : getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.5) + (newHero.xp.max* 0.1), (newHero.xp.max* 0.1));
+                            const XpReceived = originalEnemy.type ==! 'normal' ? ((originalEnemy.life * 1.5) + (newHero.xp.max * 0.1)) : getRandomNumberBetweenMaxAndMin( (originalEnemy.life * 0.8) + (newHero.xp.max* 0.2), (newHero.xp.max* 0.5));
     
                             levelUp(XpReceived);
     
@@ -100,8 +100,8 @@ export const useStore = create(
                     const damageOfHeroWithAttributes = Math.round(newHero.attributes.attack / bonusAttack);
                     
     
-                    // const danoOfHero = getRandomNumberBetweenMaxAndMin(((golpe.damage * newHero.level) + damageOfHeroWithAttributes), golpe.damage + damageOfHeroWithAttributes + (originalEnemy.defense * 0.8));
-                    const danoOfHero = golpe.damage + newHero.level + damageOfHeroWithAttributes;
+                    const danoOfHero = getRandomNumberBetweenMaxAndMin(((golpe.damage * newHero.level) + damageOfHeroWithAttributes), golpe.damage + damageOfHeroWithAttributes + (originalEnemy.defense * 2));
+                    // const danoOfHero = golpe.damage + newHero.level + damageOfHeroWithAttributes;
                     // @ts-ignore
                     const totalDamageOfHero = (danoOfHero - newEnemy.defense) <= 0 ? 0 : danoOfHero - newEnemy.defense;
 
@@ -396,6 +396,6 @@ export const useStore = create(
                 }
             },
         }),
-        { name: 'store', version: 0.3 }
+        { name: 'store', version: 0.2 }
     )
 )
